@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import com.training.service.CardPaymentService;
 import com.training.service.CashPaymentService;
+import com.training.service.ExtendedCardPayment;
 import com.training.service.PaymentService;
 
 public class PaymentModule extends AbstractModule {
@@ -16,5 +17,7 @@ public class PaymentModule extends AbstractModule {
         bind(PaymentService.class)
             .annotatedWith(Names.named("CashPayment"))
             .to(CashPaymentService.class);
+        
+        bind(CardPaymentService.class).to(ExtendedCardPayment.class);
     }
 }
